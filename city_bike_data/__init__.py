@@ -28,12 +28,20 @@ class CityBikeData():
             logging.exception(err)
 
     def get_data_df(self, endpoint: str) -> pd.DataFrame:
-        response = self.get_data(endpoint)
-        df = pd.json_normalize(response.json()["data"]["stations"])
-        return df
+        try:
+            response = self.get_data(endpoint)
+            df = pd.json_normalize(response.json()["data"]["stations"])
+            return df
+        except Exception as ex:
+            logging.exception(ex)
+            return None
 
     def processed_data(self) -> pd.DataFrame:
-        station_info_df = self.get_data_df(self.STATIONS)
-        station_status_df = self.get_data_df(self.AVAILABILITY)
-        df = pd.merge(station_info_df, station_status_df, on="station_id")
-        return df
+        try:
+            station_info_df = self.get_data_df(self.STATIONS)
+            station_status_df = self.get_data_df(self.AVAILABILITY)
+            df = pd.merge(station_info_df, station_status_df, on="station_id")
+            return df
+        except Exception as ex:
+            logging.exception(ex)
+            return None
