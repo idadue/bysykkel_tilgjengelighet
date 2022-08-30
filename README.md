@@ -5,12 +5,20 @@ En enkel [streamlit applikasjon](https://github.com/streamlit/streamlit)  som he
 
 Python virtuelt miljø og installer nødvendige biblioteker  (anbefaler python 3.9):
 
+Windows:
+
 ```
 python -m venv venv
-.\venv\Scripts\activate (Windows) ELLER source venv/bin/activate (bash)
+.\venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+Unix/MacOS:
+```
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 ## Run
 
 ```
@@ -20,3 +28,5 @@ streamlit run app.py
 Streamlit serveren skal da starte standardnettleseren din og ta deg rett til appen.
 
 ## Bruk
+![](demo.gif)
+
