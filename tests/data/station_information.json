@@ -1,0 +1,15 @@
+{
+  "last_updated": 1663754697,
+  "data": {
+    "stations": [
+      {
+        "station_id": "623",
+        "name": "7 Juni Plassen",
+        "address": "7 Juni Plassen",
+        "lat": 59.9150596,
+        "lon": 10.7312715,
+        "capacity": 15
+      }
+    ]
+  }
+}

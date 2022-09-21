@@ -1,0 +1,16 @@
+{
+  "last_updated": 1663754697,
+  "data": {
+    "stations": [
+      {
+        "is_installed": 1,
+        "is_renting": 1,
+        "num_bikes_available": 4,
+        "num_docks_available": 8,
+        "last_reported": 1663754697,
+        "is_returning": 1,
+        "station_id": "623"
+      }
+    ]
+  }
+}
