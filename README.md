@@ -1,7 +1,7 @@
 # Bysykkel tilgjengelighet 🚲
 [Del 1](#del-1): En enkel [streamlit applikasjon](https://github.com/streamlit/streamlit)  som henter sanntidsdata fra [Oslo bysykkel](https://oslobysykkel.no/apne-data/sanntid) og viser antall ledige sykler og låser for valgt stasjon. 
 
-[Del 2](#del-2): REST-basert endepunkt.
+[Del 2](#del-2): Tester for del 1 og et REST-basert endepunkt.
 
 ## Setup
 
@@ -28,6 +28,8 @@ streamlit run app.py
 ```
 
 Streamlit serveren skal da starte standardnettleseren din og ta deg rett til appen.
+#### Hvordan bruke streamlit applikasjonen
+![](demo.gif)
 
 ### Del 2
 For å starte applikasjonen:
@@ -78,6 +80,9 @@ Respons
     ]
 }
 ```
-## Hvordan bruke streamlit applikasjonen
-![](demo.gif)
 
+#### Tester
+For å kjøre tester (i toppnivåmappen til prosjektet):
+```
+pytest
+```
