@@ -12,7 +12,9 @@ def main():
     )
 
     city_bike = CityBikeData()
-    df = city_bike.processed_data()
+    station_status_df = city_bike.get_data_df(city_bike.AVAILABILITY)
+    station_information_df = city_bike.get_data_df(city_bike.STATIONS)
+    df = city_bike.processes_data(station_status_df, station_information_df)
     if df is None:
         st.error("Tjenesten er ikke tilgjengelig akkurat nå 😭 Prøv igjen senere.")
     else:
@@ -49,4 +51,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

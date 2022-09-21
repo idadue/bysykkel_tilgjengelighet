@@ -2,7 +2,6 @@ from urllib import response
 import requests
 import logging
 import pandas as pd
-from pandas import json_normalize
 
 
 class CityBikeData():
@@ -36,10 +35,8 @@ class CityBikeData():
             logging.exception(ex)
             return None
 
-    def processed_data(self) -> pd.DataFrame:
+    def processes_data(self, station_info_df, station_status_df) -> pd.DataFrame:
         try:
-            station_info_df = self.get_data_df(self.STATIONS)
-            station_status_df = self.get_data_df(self.AVAILABILITY)
             df = pd.merge(station_info_df, station_status_df, on="station_id")
             return df
         except Exception as ex:

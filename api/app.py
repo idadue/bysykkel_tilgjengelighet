@@ -32,20 +32,24 @@ VERSION_INFO = VersionInfo(version="1.0.0", service="Bysykkel tilgjengelighet")
 
 app = FastAPI(version=VERSION_INFO.version)
 
+
 @app.get("/version")
 async def version():
     return VERSION_INFO.now()
 
+
 @app.get("/availability")
 async def get_availability():
     city_bike = CityBikeData()
-    availability_df = city_bike.processes_data()
+    station_status_df = city_bike.get_data_df(city_bike.AVAILABILITY)
+    station_information_df = city_bike.get_data_df(city_bike.STATIONS)
+    availability_df = city_bike.processes_data(station_status_df, station_information_df)
 
     availability_dict = (availability_df.groupby(['last_reported'])
-       .apply(lambda x: x[['station_id','name', 'num_bikes_available', 'num_docks_available']].to_dict('records'))
-       .reset_index()
-       .rename(columns={0:'data'})
-       .to_dict(orient='records'))
+                         .apply(lambda x: x[['station_id', 'name', 'num_bikes_available', 'num_docks_available']].to_dict('records'))
+                         .reset_index()
+                         .rename(columns={0: 'data'})
+                         .to_dict(orient='records'))
 
     availability = CityBikeAvailability(last_reported=availability_dict[0]["last_reported"], data=availability_dict[0]["data"])
     return availability
